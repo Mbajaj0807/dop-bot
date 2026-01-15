@@ -4,7 +4,7 @@ const Session = require("./sessionStore");
 const { loginERP } = require("./erp");
 const { generateOutPass } = require("./automation");
 
-const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+const bot = new TelegramBot("8578047453:AAHsIxleJfQLjpRw1T5IrJw_ESGzq7UmzBE", { polling: true });
 
 
 
