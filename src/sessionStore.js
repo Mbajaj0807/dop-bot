@@ -1,13 +1,26 @@
 const mongoose = require("mongoose");
 
 const SessionSchema = new mongoose.Schema({
-  telegramUserId: { type: String, unique: true },
+  telegramUserId: String,
+
+  // auth
   cookie: String,
-  parentId: String,
+
+  // identity
   studentId: String,
   studentName: String,
+  parentId: String,
   instituteId: String,
-  createdAt: { type: Date, default: Date.now },
+
+  // academic context (NEW)
+  prId: String,
+  crId: String,
+  deptId: String,
+  semId: String,
+  acYr: String,
+  cmProgId: String,
+
+  createdAt: Date,
   lastUsedAt: Date
 });
 
