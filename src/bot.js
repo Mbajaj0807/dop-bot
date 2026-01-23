@@ -12,7 +12,7 @@ const { fetchDetailedAttendance } = require("./fetchDetailedAttendance");
 const { formatSubject } = require("./formatSubjectAttendance");
 const {fetchTimetable} = require("./fetchTimtable");
 
-const bot = new TelegramBot("8552915942:AAGJ9n__lcK4X6Tf0_hVF3SONRU8wx7j_-I", { polling: true });
+const bot = new TelegramBot("8578047453:AAHsIxleJfQLjpRw1T5IrJw_ESGzq7UmzBE", { polling: true });
 
 
 
