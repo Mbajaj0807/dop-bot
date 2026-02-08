@@ -15,7 +15,6 @@ const {fetchTimetable} = require("./fetchTimtable");
 const bot = new TelegramBot("8578047453:AAHsIxleJfQLjpRw1T5IrJw_ESGzq7UmzBE", { polling: true });
 
 
-
 bot.on("message", async msg => {
   const chatId = msg.chat.id;
   const userId = String(msg.from.id);
@@ -27,20 +26,16 @@ bot.on("message", async msg => {
     chatId,
 `👋 Welcome!
 
-This bot helps you quickly generate a *Day Out Pass* on Bennett ERP.
+This bot helps you access Bennett ERP features easily.
 
-📌 What you can do:
-• Create a Day Out Pass for *now + 1 minute till 7:00 PM*
-• Get it *approved automatically*
-• Do everything with a single command
+Available Commands:
+/login – Connect Parent CAMU account
+/generateoutpass – Create Day Out Pass
+/timetable – View today's timetable
+/attendance – Check attendance
+/messmenu – View mess menu
+/showmessqr – Get mess QR code`
 
-📍 Commands:
-/login – Connect your account(parent camu credentials)
-/generateoutpass – Create out-pass
-/status – Check connection
-/logout – Disconnect account
-
-🚀 Start with /login`
   );
 }
 
