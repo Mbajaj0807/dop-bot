@@ -1,18 +1,18 @@
 const TelegramBot = require("node-telegram-bot-api");
-const state = require("./state");
-const Session = require("./sessionStore");
-const { loginERP, fetchStudentProgress } = require("./erp");
-const { generateOutPass } = require("./automation");
-const { fetchMessMenu } = require("./messMenu");
-const { fetchMessQR } = require("./fetchMessQR");
+const state = require("../utils/state");
+const Session = require("../services/sessionStore");
+const { loginERP, fetchStudentProgress } = require("../services/erp");
+const { generateOutPass } = require("../automation");
+const { fetchMessMenu } = require("../features/mess/messMenu");
+const { fetchMessQR } = require("../features/mess/fetchMessQR");
 const QRCode = require("qrcode");
-const { fetchAttendance } = require("./fetchAttendance");
-const { calculateAttendanceImpact } = require("./attendanceCalc");
-const { fetchDetailedAttendance } = require("./fetchDetailedAttendance");
-const { formatSubject } = require("./formatSubjectAttendance");
-const {fetchTimetable} = require("./fetchTimtable");
+const { fetchAttendance } = require("../features/attendance/fetchAttendance");
+const { calculateAttendanceImpact } = require("../features/attendance/attendanceCalc");
+const { fetchDetailedAttendance } = require("../features/attendance/fetchDetailedAttendance");
+const { formatSubject } = require("../features/attendance/formatSubjectAttendance");
+const {fetchTimetable} = require("../features/timetable/fetchTimtable");
 
-const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
+const bot = new TelegramBot(process.env.DOP_BOT_TOKEN, { polling: true });
 
 
 bot.on("message", async msg => {
