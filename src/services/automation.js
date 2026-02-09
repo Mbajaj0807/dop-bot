@@ -1,7 +1,7 @@
 //Outpass 
 
 const axios = require("axios");
-const { getOutpassWindow } = require("./time");
+const { getOutpassWindow } = require("../utils/time");
 
 const BASE = "https://student.bennetterp.camu.in";
 

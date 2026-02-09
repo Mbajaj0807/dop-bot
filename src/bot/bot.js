@@ -1,19 +1,55 @@
 const TelegramBot = require("node-telegram-bot-api");
+const QRCode = require("qrcode");
+
+// Utils
 const state = require("../utils/state");
+
+// Services
 const Session = require("../services/sessionStore");
 const { loginERP, fetchStudentProgress } = require("../services/erp");
-const { generateOutPass } = require("../automation");
+const { generateOutPass } = require("../services/automation");
+
+// Mess
 const { fetchMessMenu } = require("../features/mess/messMenu");
 const { fetchMessQR } = require("../features/mess/fetchMessQR");
-const QRCode = require("qrcode");
+
+// Attendance
 const { fetchAttendance } = require("../features/attendance/fetchAttendance");
-const { calculateAttendanceImpact } = require("../features/attendance/attendanceCalc");
 const { fetchDetailedAttendance } = require("../features/attendance/fetchDetailedAttendance");
+const calculateAttendanceImpact = require("../features/attendance/attendanceCalc");
 const { formatSubject } = require("../features/attendance/formatSubjectAttendance");
-const {fetchTimetable} = require("../features/timetable/fetchTimtable");
+
+// Timetable
+const { fetchTimetable } = require("../features/timetable/fetchTimtable");
 
 const bot = new TelegramBot(process.env.DOP_BOT_TOKEN, { polling: true });
 
+bot.onText(/\/contribute/, (msg) => {
+  bot.sendMessage(
+    msg.chat.id,
+`🤝 Contribute to this Bot
+
+This project is open-source and welcomes contributions!
+
+💻 GitHub Repository:
+https://github.com/Mbajaj0807/campus-erp-bot
+
+📌 How you can help:
+• Report issues or bugs
+• Add new features or commands
+• Improve existing functionality
+• Enhance documentation
+• Optimize performance
+
+🔁 How to contribute:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Open a Pull Request
+
+Thank you for helping make this bot even better ❤️`
+  );
+});
 
 bot.on("message", async msg => {
   const chatId = msg.chat.id;
@@ -106,32 +142,7 @@ Available Commands:
       );
     }
 
-    bot.onText(/\/contribute/, (msg) => {
-  bot.sendMessage(
-    msg.chat.id,
-`🤝 Contribute to this Bot
-
-This project is open-source and welcomes contributions!
-
-💻 GitHub Repository:
-https://github.com/Mbajaj0807/campus-erp-bot
-
-📌 How you can help:
-• Report issues or bugs
-• Add new features or commands
-• Improve existing functionality
-• Enhance documentation
-• Optimize performance
-
-🔁 How to contribute:
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Open a Pull Request
-
-Thank you for helping make this bot even better ❤️`
-  );
-});
+    
 
 
     /* GENERATE OUT PASS */
