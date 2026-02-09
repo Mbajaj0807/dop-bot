@@ -12,7 +12,7 @@ const { fetchDetailedAttendance } = require("./fetchDetailedAttendance");
 const { formatSubject } = require("./formatSubjectAttendance");
 const {fetchTimetable} = require("./fetchTimtable");
 
-const bot = new TelegramBot("8578047453:AAHsIxleJfQLjpRw1T5IrJw_ESGzq7UmzBE", { polling: true });
+const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
 
 bot.on("message", async msg => {
@@ -105,6 +105,34 @@ Available Commands:
         `✅ Login successful\n👤 ${session.studentName}`
       );
     }
+
+    bot.onText(/\/contribute/, (msg) => {
+  bot.sendMessage(
+    msg.chat.id,
+`🤝 Contribute to this Bot
+
+This project is open-source and welcomes contributions!
+
+💻 GitHub Repository:
+https://github.com/Mbajaj0807/campus-erp-bot
+
+📌 How you can help:
+• Report issues or bugs
+• Add new features or commands
+• Improve existing functionality
+• Enhance documentation
+• Optimize performance
+
+🔁 How to contribute:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Open a Pull Request
+
+Thank you for helping make this bot even better ❤️`
+  );
+});
+
 
     /* GENERATE OUT PASS */
     if (text === "/generateoutpass") {
