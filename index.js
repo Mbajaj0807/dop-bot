@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-require("./src/bot");
+require("./src/bot/bot");
 
 (async () => {
   try {
